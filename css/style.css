@@ -1,0 +1,307 @@
+@charset "UTF-8";
+
+/* 共通部分 
+-----------------------*/
+html {
+    font-size: 100%;
+}
+body {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    color: #8E7E7E;
+}
+h1 {
+    padding: 1% 0;
+    font-size: 32px;
+    text-align: center;
+}
+h2 {
+    padding: 1% 0;
+    font-size: 25px;
+    text-align: center;
+}
+a {
+    text-decoration: none;
+}
+ul {
+    list-style-position: inside;
+}
+p {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.wrapper {
+    width: 80%;
+    margin: 30px auto;
+    border: 1px solid #dfdfdc;
+    border-radius: 5px;
+}
+
+/* フォーム */
+input[type="text"] {
+    border: 1px solid #8E7E7E;
+    border-radius: 9px;
+    width: 100%;
+    padding: 18px;
+    font-weight: 300;
+}
+
+/* ボタン */
+.big-btn {
+    width: 40%;
+    margin-top: 3%;
+    border-radius: 13px;
+    position: relative;
+}
+.big-btn:hover {
+    background-color: #E3750E;
+}
+.btn {
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+}
+.btn:hover {
+    background-color: #bbe7e7;
+}
+.big-btn:hover .btn {
+    background-color: #E3750E;
+}
+.big-btn span {
+    letter-spacing: 0.04em;
+    color: #E3750E;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 2vw;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 77%;
+    height: fit-content;
+}
+.big-btn:hover span {
+    color: #FBE6DA;
+}
+.big-icon {
+    font-weight: 900;
+    padding: 4%;
+    font-size: 2.5rem;
+    float: right;
+    border-radius: 0 13px 13px 0;
+}
+.one-task {
+    background: #FBFBFB;
+    box-shadow: 5px 5px 13px rgba(0, 0, 0, 0.25);
+    position: relative;
+    border-radius: 5px;
+    list-style: none;
+    margin: auto 15%;
+    margin-top: 2%;
+    display: flex;
+    align-items: center;
+    align-content: stretch;
+    padding: 0;
+}
+.btn-set {
+    display: flex;
+    gap: 10%;
+    width: auto;
+    margin-left: auto;
+    margin-right: 58px;
+}
+.edit-btn {
+    font-size: 1.6rem;
+    padding: 5% 23% 14% 23%;
+}
+.delete-btn {
+    font-size: 1.6rem;
+    padding: 5% 24% 14% 24%;
+}
+.check-btn {
+    font-size: 2.5rem;
+    padding: 0 1.2%;
+    border-radius: 5px 0px 0px 5px;
+    margin-right: 2%;
+}
+.done-btn {
+    background-color: #5CC4BD;
+}
+.edit-btn {
+    background-color: #EBF5F5;
+    color: #8E7E7E;
+}
+.delete-btn {
+    background-color: #E3750E;
+}
+.reply-btn {
+    background-color: #FBE6DA;
+    color: #F5CBA9;
+}
+.task-form-group {
+    padding: 3% 7%;
+    background: #FBFBFB;
+    box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    position: relative;
+    margin: 3% 15% 5%;
+}
+
+
+/* ヘッダー 
+-----------------------*/
+.header-task {
+    background: #5CC4BD;
+    width: 100%;
+    padding: 1%;
+}
+.header-task a {
+    color: #fff;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+}
+
+/* タスク一覧画面 
+-----------------------*/
+/* タスク登録フォーム */
+.dashboard {
+    position: relative;
+}
+.new-task form {
+    text-align: center;
+}
+.add-btn {
+    background-color: #FBE6DA;
+}
+.fa-plus {
+    background-color: #E3750E;
+    color: #FBE6DA;
+}
+
+/* ボタンの代わり */
+.ellipse {
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 100%;
+    background: #EBF5F5;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+    border-radius: 0 0 40px 40px;
+    display: block;
+}
+.ellipse::before,
+.ellipse::after {
+    content: '';
+    width: 30px;
+    height: 0px;
+    top: 46%;
+    border: 3px solid #5CC4BD;
+    position: absolute;
+}
+.ellipse::before {
+    left: 20.5%;
+    transform: rotate(45deg);
+}
+.ellipse::after {
+    right: 20.5%;
+    transform: rotate(-45deg);
+}
+.ellipse:hover {
+    background-color: #bbe7e7;
+}
+input[type="checkbox"] {
+    display: none;
+}
+label[for="form-box"] {
+    display: block;
+}
+/* ボタンクリックで新規登録要素の表示 */
+#form-box:checked+.new-task {
+    display: none;
+}
+.errors {
+    color: #EC6998;
+    list-style: none;
+    margin-bottom: 1%;
+}
+.errors li {
+    background-color: #F8DBE5;
+    border-radius: 5px;
+    padding: 1%;
+    margin-bottom: 1%;
+}
+
+/* 未完了タスク一覧 */
+.notyet-task {
+    margin-top: 4%;
+    margin-bottom: 60px;
+}
+.notyet-task h2 {
+    background: radial-gradient(99.26% 32260.26% at 99.26% 50.71%, rgba(235, 245, 245, 0) 0%, rgba(251, 230, 218, 0.827281) 21.63%, #FBE6DA 37.5%);
+    color: #E3750E;
+}
+
+/* 完了タスク一覧 */
+.done-task {
+    margin-top: 6%;
+    margin-bottom: 60px;
+}
+.done-task h2 {
+    background: radial-gradient(99.26% 32260.26% at 99.26% 50.71%, rgba(251, 230, 218, 0) 0%, #EBF5F5 25.39%, #EBF5F5 37.5%);
+    color: #5CC4BD;
+}
+
+/* 更新ページ
+-----------------------*/
+.update-task {
+    margin-bottom: 60px;
+}
+.update-task-title {
+    margin-top: 3%;
+    margin-bottom: 3%;
+    background: linear-gradient(90deg, rgba(92, 196, 189, 0.27) 78.44%, rgba(0, 0, 0, 0.0675) 100.94%);
+}
+.update-btn-group {
+    text-align: center;
+    display: flex;
+}
+.update-btn-group .big-btn {
+    width: 100%;
+}
+.update-btn-group .big-btn span {
+    width: 83%;
+}
+
+/* 更新ボタン */
+.update-btn {
+    background-color: #FBE6DA;
+    margin-right: 1%;
+}
+.fa-arrow-rotate-right {
+    background-color: #E3750E;
+    color: #FBE6DA;
+}
+
+/* 戻るボタン */
+.return-btn {
+    background-color: #EBF5F5;
+    margin-left: 1%;
+}
+.return-btn:hover {
+    background-color: #5CC4BD;
+}
+.return-btn span {
+    color: #5CC4BD;
+}
+.return-btn:hover span {
+    background-color: #5CC4BD;
+    color: #EBF5F5;
+}
+.fa-arrow-rotate-left {
+    background-color: #5CC4BD;
+    color: #EBF5F5;
+}
