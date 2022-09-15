@@ -195,3 +195,27 @@ function update_task($id, $title)
     // プリペアドステートメントの実行
     $stmt->execute();
 }
+
+// タスク削除
+function delete_task($id)
+{
+    // データベースに接続
+    $dbh = connect_db();
+
+    // $id を使用してデータを削除
+    $sql = <<<EOM
+    DELETE FROM
+        tasks
+    WHERE
+        id = :id
+    EOM;
+
+    // プリペアドステートメントの準備
+    $stmt = $dbh->prepare($sql);
+
+    // パラメータのバインド
+    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+
+    // プリペアドステートメントの実行
+    $stmt->execute();
+}
