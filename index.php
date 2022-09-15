@@ -60,7 +60,7 @@ $done_tasks = find_task_by_done(TASK_DONE);
                         <a href="done.php?id=<?= h($task['id']) ?>&status=<?= TASK_DONE ?>" class="btn check-btn done-btn"><i class="fa-solid fa-check"></i></a>
                         <p><?= h($task['title']) ?></p>
                         <div class="btn-set">
-                            <a href="" class="btn edit-btn"><i class="fa-solid fa-pencil"></i></a>
+                            <a href="edit.php?id=<?= h($task['id']) ?>" class="btn edit-btn"><i class="fa-solid fa-pencil"></i></a>
                             <a href="" class="btn delete-btn"><i class="fa-solid fa-trash-can"></i></a>
                         </div>
                     </li>
@@ -75,7 +75,7 @@ $done_tasks = find_task_by_done(TASK_DONE);
                         <a href="done.php?id=<?= h($task['id']) ?>&status=<?= TASK_NOTYET ?>" class="btn check-btn reply-btn"><i class="fa-solid fa-reply"></i></a>
                         <p><?= h($task['title']) ?></p>
                         <div class="btn-set">
-                            <a href="" class="btn edit-btn"><i class="fa-solid fa-pencil"></i></a>
+                            <a href="edit.php?id=<?= h($task['id']) ?>" class="btn edit-btn"><i class="fa-solid fa-pencil"></i></a>
                             <a href="" class="btn delete-btn"><i class="fa-solid fa-trash-can"></i></a>
                         </div>
                     </li>

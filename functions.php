@@ -122,3 +122,76 @@ function find_task_by_done($status)
     // 結果の取得
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+// 受け取った id のレコードを取得
+function find_task_by_id($id)
+{
+    // データベースに接続
+    $dbh = connect_db();
+
+    // $id を使用してデータを取得
+    $sql = <<<EOM
+    SELECT
+        *
+    FROM
+        tasks
+    WHERE
+        id = :id;
+    EOM;
+
+    // プリペアドステートメントの準備
+    $stmt = $dbh->prepare($sql);
+
+    // パラメータのバインド
+    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+
+    // プリペアドステートメントの実行
+    $stmt->execute();
+
+    // 結果の取得
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+// タスク更新時のバリデーション
+function update_validate($title, $task)
+{
+    // 初期化
+    $errors = [];
+
+    if (empty($title)) {
+        $errors[] = MSG_TITLE_REQUIRED;
+    }
+
+    if ($title == $task['title']) {
+        $errors[] = MSG_TITLE_NO_CHANGE;
+    }
+
+    return $errors;
+}
+
+// タスク更新
+function update_task($id, $title)
+{
+    // データベースに接続
+    $dbh = connect_db();
+
+    // $id を使用してデータを更新
+    $sql = <<<EOM
+    UPDATE
+        tasks
+    SET
+        title = :title
+    WHERE
+        id = :id
+    EOM;
+
+    // プリペアドステートメントの準備
+    $stmt = $dbh->prepare($sql);
+
+    // パラメータのバインド
+    $stmt->bindValue(':title', $title, PDO::PARAM_STR);
+    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+
+    // プリペアドステートメントの実行
+    $stmt->execute();
+}
