@@ -2,6 +2,27 @@
 require_once __DIR__ . '/functions.php';
 require_once __DIR__ . '/config.php';
 
+/* タスク登録
+---------------------------------------------*/
+// 初期化
+$title = '';
+$errors = [];
+
+// リクエストメソッドの判定
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // フォームに入力されたデータを受け取る
+    $title = filter_input(INPUT_POST, 'title');
+
+    // バリデーション
+    $errors = insert_validate($title);
+
+    // エラーチェック
+    if (empty($errors)) {
+        // タスク登録処理の実行
+        insert_task($title);
+    }
+}
+
 $notyet_tasks = find_task_by_done(TASK_NOTYET);
 $done_tasks = find_task_by_done(TASK_DONE);
 ?>
@@ -20,9 +41,8 @@ $done_tasks = find_task_by_done(TASK_DONE);
             <input type="checkbox" value="" id="form-box">
             <div class="new-task task-form-group">
                 <!-- エラーが発生した場合、エラーメッセージを出力 -->
-                <ul class="errors">
-                    <li>タスク名を入力してください</li>
-                </ul>
+                <?php include_once __DIR__ . '/_errors.php' ?>
+
                 <form action="" method="post">
                     <input type="text" name="title" placeholder="タスクを入力してください">
                     <button type="submit" class="big-btn add-btn">
@@ -38,7 +58,7 @@ $done_tasks = find_task_by_done(TASK_DONE);
                 <?php foreach ($notyet_tasks as $task) : ?>
                     <li class="one-task">
                         <a href="" class="btn check-btn done-btn"><i class="fa-solid fa-check"></i></a>
-                        <p><?= h($task ['title'] ) ?></p>
+                        <p><?= h($task['title']) ?></p>
                         <div class="btn-set">
                             <a href="" class="btn edit-btn"><i class="fa-solid fa-pencil"></i></a>
                             <a href="" class="btn delete-btn"><i class="fa-solid fa-trash-can"></i></a>
