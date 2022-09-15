@@ -57,7 +57,7 @@ $done_tasks = find_task_by_done(TASK_DONE);
             <ul>
                 <?php foreach ($notyet_tasks as $task) : ?>
                     <li class="one-task">
-                        <a href="" class="btn check-btn done-btn"><i class="fa-solid fa-check"></i></a>
+                        <a href="done.php?id=<?= h($task['id']) ?>" class="btn check-btn done-btn"><i class="fa-solid fa-check"></i></a>
                         <p><?= h($task['title']) ?></p>
                         <div class="btn-set">
                             <a href="" class="btn edit-btn"><i class="fa-solid fa-pencil"></i></a>
